@@ -5,7 +5,7 @@ type Props = {};
 
 function BackToCrmButton({}: Props) {
   const handleClick = () => {
-    console.log('Back to CRM');
+    window.location.href = window.email.generator.backURL || '/'
   };
   return (
     <Tooltip title="Wróć do szablonów email">
