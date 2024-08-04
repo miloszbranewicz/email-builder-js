@@ -2,6 +2,7 @@ import { Save } from '@mui/icons-material';
 import { CircularProgress, IconButton, Tooltip } from '@mui/material';
 import { renderToStaticMarkup } from '@usewaypoint/email-builder';
 import React, { useState } from 'react';
+import toast from 'react-hot-toast';
 import { useDocument } from '../../documents/editor/EditorContext';
 type Props = {};
 
@@ -13,20 +14,28 @@ function SaveTemplateButton({}: Props) {
     try {
       setIsLoading(true);
 
-      const response = await fetch(window.saveTemplateURL, {
+      const response = await fetch(window.email.generator.updateTemplate, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'X-CSRF-Token': window.csrfToken || '',
+          'X-CSRF-Token': window.email.generator.csrf || '',
         },
+
         body: JSON.stringify({
-          template_id: window.template_id || '',
+          template_id: window.email.generator.templateID || '',
           template_html: html,
           template_json: document,
         }),
       });
+
+      if (response.status >= 200 && response.status < 300) {
+        toast.success('Szablon został zapisany');
+      } else {
+        toast.error('Wystąpił błąd podczas zapisywania szablonu');
+      }
     } catch (error) {
       console.error(error);
+      toast.error('Wystąpił błąd podczas zapisywania szablonu');
     } finally {
       setIsLoading(false);
     }

@@ -4,6 +4,7 @@ import { Stack, useTheme } from '@mui/material';
 
 import { useInspectorDrawerOpen, useSamplesDrawerOpen } from '../documents/editor/EditorContext';
 
+import { Toaster } from 'react-hot-toast';
 import InspectorDrawer, { INSPECTOR_DRAWER_WIDTH } from './InspectorDrawer';
 import { SAMPLES_DRAWER_WIDTH } from './SamplesDrawer';
 import TemplatePanel from './TemplatePanel';
@@ -36,6 +37,7 @@ export default function App() {
       >
         <TemplatePanel />
       </Stack>
+      <Toaster/>
     </>
   );
 }
