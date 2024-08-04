@@ -1,12 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import { Stack, useTheme } from '@mui/material';
 
-import { useInspectorDrawerOpen, useSamplesDrawerOpen } from '../documents/editor/EditorContext';
+import { resetDocument, useInspectorDrawerOpen, useSamplesDrawerOpen } from '../documents/editor/EditorContext';
 
 import { Toaster } from 'react-hot-toast';
 import InspectorDrawer, { INSPECTOR_DRAWER_WIDTH } from './InspectorDrawer';
-import { SAMPLES_DRAWER_WIDTH } from './SamplesDrawer';
 import TemplatePanel from './TemplatePanel';
 
 function useDrawerTransition(cssProperty: 'margin-left' | 'margin-right', open: boolean) {
@@ -23,6 +22,22 @@ export default function App() {
 
   const marginLeftTransition = useDrawerTransition('margin-left', samplesDrawerOpen);
   const marginRightTransition = useDrawerTransition('margin-right', inspectorDrawerOpen);
+  const defaultTemplate = {
+    root: {
+      data: {
+        textColor: '#262626',
+        fontFamily: 'MODERN_SANS',
+        canvasColor: '#FFFFFF',
+        childrenIds: [],
+        backdropColor: '#F5F5F5',
+      },
+      type: 'EmailLayout',
+    },
+  };
+  useEffect(() => {
+    // Load template
+    resetDocument(window.email.generator.templateJSON || defaultTemplate);
+  }, []);
 
   return (
     <>
@@ -31,13 +46,12 @@ export default function App() {
       <Stack
         sx={{
           marginRight: inspectorDrawerOpen ? `${INSPECTOR_DRAWER_WIDTH}px` : 0,
-          marginLeft: samplesDrawerOpen ? `${SAMPLES_DRAWER_WIDTH}px` : 0,
           transition: [marginLeftTransition, marginRightTransition].join(', '),
         }}
       >
         <TemplatePanel />
       </Stack>
-      <Toaster/>
+      <Toaster />
     </>
   );
 }
