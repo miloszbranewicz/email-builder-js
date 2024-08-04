@@ -25,7 +25,7 @@ export default function MainTabsGroup() {
       <Tab
         value="editor"
         label={
-          <Tooltip title="Edit">
+          <Tooltip title="Edytuj">
             <EditOutlined fontSize="small" />
           </Tooltip>
         }
@@ -33,7 +33,7 @@ export default function MainTabsGroup() {
       <Tab
         value="preview"
         label={
-          <Tooltip title="Preview">
+          <Tooltip title="Podgląd">
             <PreviewOutlined fontSize="small" />
           </Tooltip>
         }
@@ -41,7 +41,7 @@ export default function MainTabsGroup() {
       <Tab
         value="html"
         label={
-          <Tooltip title="HTML output">
+          <Tooltip title="Wyjściowy HTML">
             <CodeOutlined fontSize="small" />
           </Tooltip>
         }
@@ -49,7 +49,7 @@ export default function MainTabsGroup() {
       <Tab
         value="json"
         label={
-          <Tooltip title="JSON output">
+          <Tooltip title="Wyjściowy JSON">
             <DataObjectOutlined fontSize="small" />
           </Tooltip>
         }

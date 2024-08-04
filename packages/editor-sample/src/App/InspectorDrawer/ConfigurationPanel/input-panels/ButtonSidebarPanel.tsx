@@ -35,9 +35,9 @@ export default function ButtonSidebarPanel({ data, setData }: ButtonSidebarPanel
   const buttonBackgroundColor = data.props?.buttonBackgroundColor ?? ButtonPropsDefaults.buttonBackgroundColor;
 
   return (
-    <BaseSidebarPanel title="Button block">
+    <BaseSidebarPanel title="Przycisk">
       <TextInput
-        label="Text"
+        label="Tekst"
         defaultValue={text}
         onChange={(text) => updateData({ ...data, props: { ...data.props, text } })}
       />
@@ -47,7 +47,7 @@ export default function ButtonSidebarPanel({ data, setData }: ButtonSidebarPanel
         onChange={(url) => updateData({ ...data, props: { ...data.props, url } })}
       />
       <RadioGroupInput
-        label="Width"
+        label="Szerokość"
         defaultValue={fullWidth ? 'FULL_WIDTH' : 'AUTO'}
         onChange={(v) => updateData({ ...data, props: { ...data.props, fullWidth: v === 'FULL_WIDTH' } })}
       >
@@ -55,7 +55,7 @@ export default function ButtonSidebarPanel({ data, setData }: ButtonSidebarPanel
         <ToggleButton value="AUTO">Auto</ToggleButton>
       </RadioGroupInput>
       <RadioGroupInput
-        label="Size"
+        label="Rozmiar"
         defaultValue={size}
         onChange={(size) => updateData({ ...data, props: { ...data.props, size } })}
       >
@@ -69,12 +69,12 @@ export default function ButtonSidebarPanel({ data, setData }: ButtonSidebarPanel
         defaultValue={buttonStyle}
         onChange={(buttonStyle) => updateData({ ...data, props: { ...data.props, buttonStyle } })}
       >
-        <ToggleButton value="rectangle">Rectangle</ToggleButton>
-        <ToggleButton value="rounded">Rounded</ToggleButton>
+        <ToggleButton value="rectangle">Kwadrat</ToggleButton>
+        <ToggleButton value="rounded">Zaokrąglony</ToggleButton>
         <ToggleButton value="pill">Pill</ToggleButton>
       </RadioGroupInput>
       <ColorInput
-        label="Text color"
+        label="Kolor tekstu"
         defaultValue={buttonTextColor}
         onChange={(buttonTextColor) => updateData({ ...data, props: { ...data.props, buttonTextColor } })}
       />

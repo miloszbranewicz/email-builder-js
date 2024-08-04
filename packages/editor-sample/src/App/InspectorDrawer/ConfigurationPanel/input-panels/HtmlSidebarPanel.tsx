@@ -24,9 +24,9 @@ export default function HtmlSidebarPanel({ data, setData }: HtmlSidebarPanelProp
   };
 
   return (
-    <BaseSidebarPanel title="Html block">
+    <BaseSidebarPanel title="Blok html">
       <TextInput
-        label="Content"
+        label="Treść"
         rows={5}
         defaultValue={data.props?.contents ?? ''}
         onChange={(contents) => updateData({ ...data, props: { ...data.props, contents } })}

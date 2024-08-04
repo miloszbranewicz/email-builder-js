@@ -30,11 +30,11 @@ export default function ConfigurationPanel() {
   const selectedBlockId = useSelectedBlockId();
 
   if (!selectedBlockId) {
-    return renderMessage('Click on a block to inspect.');
+    return renderMessage('Kliknij na blok żeby wyświetlić opcje.');
   }
   const block = document[selectedBlockId];
   if (!block) {
-    return renderMessage(`Block with id ${selectedBlockId} was not found. Click on a block to reset.`);
+    return renderMessage(`Nie znaleziono bloku o identyfikatorze ${selectedBlockId}. Kliknij blok, aby zresetować.`);
   }
 
   const setBlock = (conf: TEditorBlock) => setDocument({ [selectedBlockId]: conf });

@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 
-import { IosShareOutlined } from '@mui/icons-material';
-import { IconButton, Snackbar, Tooltip } from '@mui/material';
+import { Snackbar } from '@mui/material';
 
 import { useDocument } from '../../documents/editor/EditorContext';
 
@@ -12,7 +11,7 @@ export default function ShareButton() {
   const onClick = async () => {
     const c = encodeURIComponent(JSON.stringify(document));
     location.hash = `#code/${btoa(c)}`;
-    setMessage('The URL was updated. Copy it to share your current template.');
+    setMessage('Adres URL został zaktualizowany. Skopiuj go, aby udostępnić bieżący szablon.');
   };
 
   const onClose = () => {
@@ -21,11 +20,11 @@ export default function ShareButton() {
 
   return (
     <>
-      <IconButton onClick={onClick}>
-        <Tooltip title="Share current template">
+      {/* <IconButton onClick={onClick}>
+        <Tooltip title="Udostępnij template">
           <IosShareOutlined fontSize="small" />
         </Tooltip>
-      </IconButton>
+      </IconButton> */}
       <Snackbar
         anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
         open={message !== null}

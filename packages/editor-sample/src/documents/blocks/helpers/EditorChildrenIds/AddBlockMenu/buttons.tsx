@@ -22,12 +22,12 @@ type TButtonProps = {
 };
 export const BUTTONS: TButtonProps[] = [
   {
-    label: 'Heading',
+    label: 'Nagłówek',
     icon: <HMobiledataOutlined />,
     block: () => ({
       type: 'Heading',
       data: {
-        props: { text: 'Hello friend' },
+        props: { text: 'Lorem ipsum dolor' },
         style: {
           padding: { top: 16, bottom: 16, left: 24, right: 24 },
         },
@@ -35,12 +35,12 @@ export const BUTTONS: TButtonProps[] = [
     }),
   },
   {
-    label: 'Text',
+    label: 'Tekst',
     icon: <NotesOutlined />,
     block: () => ({
       type: 'Text',
       data: {
-        props: { text: 'My new text block' },
+        props: { text: 'Lorem ipsum dolor' },
         style: {
           padding: { top: 16, bottom: 16, left: 24, right: 24 },
           fontWeight: 'normal',
@@ -50,13 +50,13 @@ export const BUTTONS: TButtonProps[] = [
   },
 
   {
-    label: 'Button',
+    label: 'Przycisk',
     icon: <SmartButtonOutlined />,
     block: () => ({
       type: 'Button',
       data: {
         props: {
-          text: 'Button',
+          text: 'Przycisk',
           url: 'https://www.usewaypoint.com',
         },
         style: { padding: { top: 16, bottom: 16, left: 24, right: 24 } },
@@ -64,14 +64,14 @@ export const BUTTONS: TButtonProps[] = [
     }),
   },
   {
-    label: 'Image',
+    label: 'Obrazek',
     icon: <ImageOutlined />,
     block: () => ({
       type: 'Image',
       data: {
         props: {
           url: 'https://assets.usewaypoint.com/sample-image.jpg',
-          alt: 'Sample product',
+          alt: 'Przykładowy produkt',
           contentAlignment: 'middle',
           linkHref: null,
         },
@@ -130,7 +130,7 @@ export const BUTTONS: TButtonProps[] = [
     }),
   },
   {
-    label: 'Columns',
+    label: 'Kolumny',
     icon: <ViewColumnOutlined />,
     block: () => ({
       type: 'ColumnsContainer',
@@ -145,7 +145,7 @@ export const BUTTONS: TButtonProps[] = [
     }),
   },
   {
-    label: 'Container',
+    label: 'Kontener',
     icon: <LibraryAddOutlined />,
     block: () => ({
       type: 'Container',

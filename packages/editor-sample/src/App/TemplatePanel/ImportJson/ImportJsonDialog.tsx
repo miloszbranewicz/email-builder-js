@@ -1,16 +1,6 @@
 import React, { useState } from 'react';
 
-import {
-  Alert,
-  Button,
-  Dialog,
-  DialogActions,
-  DialogContent,
-  DialogTitle,
-  Link,
-  TextField,
-  Typography,
-} from '@mui/material';
+import { Alert, Button, Dialog, DialogActions, DialogContent, DialogTitle, TextField, Typography } from '@mui/material';
 
 import { resetDocument } from '../../../documents/editor/EditorContext';
 
@@ -37,7 +27,7 @@ export default function ImportJsonDialog({ onClose }: ImportJsonDialogProps) {
 
   return (
     <Dialog open onClose={onClose}>
-      <DialogTitle>Import JSON</DialogTitle>
+      <DialogTitle>Zaimportuj JSON</DialogTitle>
       <form
         onSubmit={(ev) => {
           ev.preventDefault();
@@ -52,15 +42,7 @@ export default function ImportJsonDialog({ onClose }: ImportJsonDialogProps) {
       >
         <DialogContent>
           <Typography color="text.secondary" paragraph>
-            Copy and paste an EmailBuilder.js JSON (
-            <Link
-              href="https://gist.githubusercontent.com/jordanisip/efb61f56ba71bd36d3a9440122cb7f50/raw/30ea74a6ac7e52ebdc309bce07b71a9286ce2526/emailBuilderTemplate.json"
-              target="_blank"
-              underline="none"
-            >
-              example
-            </Link>
-            ).
+            Wklej JSON z templatem, który chcesz zaimportować.
           </Typography>
           {errorAlert}
           <TextField
@@ -68,7 +50,7 @@ export default function ImportJsonDialog({ onClose }: ImportJsonDialogProps) {
             value={value}
             onChange={handleChange}
             type="text"
-            helperText="This will override your current template."
+            helperText="Spowoduje to zastąpienie bieżącego szablonu."
             variant="outlined"
             fullWidth
             rows={10}
@@ -77,10 +59,10 @@ export default function ImportJsonDialog({ onClose }: ImportJsonDialogProps) {
         </DialogContent>
         <DialogActions>
           <Button type="button" onClick={onClose}>
-            Cancel
+            Anuluj
           </Button>
           <Button variant="contained" type="submit" disabled={error !== null}>
-            Import
+            Importuj
           </Button>
         </DialogActions>
       </form>

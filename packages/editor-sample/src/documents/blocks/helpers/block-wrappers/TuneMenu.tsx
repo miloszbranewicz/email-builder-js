@@ -80,7 +80,7 @@ export default function TuneMenu({ blockId }: Props) {
   return (
     <Paper style={STYLE} onClick={(ev) => ev.stopPropagation()}>
       <Stack>
-        <Tooltip title="Delete" placement="left-start">
+        <Tooltip title="Usuń" placement="left-start">
           <IconButton onClick={handleDeleteClick} sx={{ color: 'text.primary' }}>
             <DeleteOutlined fontSize="small" />
           </IconButton>
