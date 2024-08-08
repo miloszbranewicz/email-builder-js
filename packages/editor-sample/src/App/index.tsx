@@ -36,7 +36,7 @@ export default function App() {
   };
   useEffect(() => {
     // Load template
-    resetDocument(window.email.generator.templateJSON || defaultTemplate);
+    resetDocument(window?.email?.generator?.templateJSON || defaultTemplate);
   }, []);
 
   return (
