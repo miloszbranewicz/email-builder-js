@@ -16,11 +16,11 @@ import ToggleInspectorPanelButton from '../InspectorDrawer/ToggleInspectorPanelB
 import BackToCrmButton from '../CRM/BackToCrmButton';
 import SaveTemplateButton from '../CRM/SaveTemplateButton';
 import DownloadJson from './DownloadJson';
-import HtmlPanel from './HtmlPanel';
 import ImportJson from './ImportJson';
 import JsonPanel from './JsonPanel';
 import MainTabsGroup from './MainTabsGroup';
 import ShareButton from './ShareButton';
+import PreviewEmailButton from '../CRM/PreviewEmailButton';
 
 export default function TemplatePanel() {
   const document = useDocument();
@@ -66,8 +66,8 @@ export default function TemplatePanel() {
             <Reader document={document} rootBlockId="root" />
           </Box>
         );
-      case 'html':
-        return <HtmlPanel />;
+      // case 'html':
+      //   return <HtmlPanel />;
       case 'json':
         return <JsonPanel />;
     }
@@ -112,6 +112,7 @@ export default function TemplatePanel() {
               </ToggleButton>
             </ToggleButtonGroup>
             <ShareButton />
+            <PreviewEmailButton/>
             <SaveTemplateButton />
           </Stack>
         </Stack>

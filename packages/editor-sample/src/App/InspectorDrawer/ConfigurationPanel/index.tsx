@@ -5,6 +5,7 @@ import { Box, Typography } from '@mui/material';
 import { TEditorBlock } from '../../../documents/editor/core';
 import { setDocument, useDocument, useSelectedBlockId } from '../../../documents/editor/EditorContext';
 
+import AttachmentsListSidebarPanel from './input-panels/AttachmentsListSidebarPanel';
 import AvatarSidebarPanel from './input-panels/AvatarSidebarPanel';
 import ButtonSidebarPanel from './input-panels/ButtonSidebarPanel';
 import ColumnsContainerSidebarPanel from './input-panels/ColumnsContainerSidebarPanel';
@@ -14,6 +15,7 @@ import EmailLayoutSidebarPanel from './input-panels/EmailLayoutSidebarPanel';
 import HeadingSidebarPanel from './input-panels/HeadingSidebarPanel';
 import HtmlSidebarPanel from './input-panels/HtmlSidebarPanel';
 import ImageSidebarPanel from './input-panels/ImageSidebarPanel';
+import OfferLinkSidebarPanel from './input-panels/OfferLinkSidebarPanel';
 import SpacerSidebarPanel from './input-panels/SpacerSidebarPanel';
 import TextSidebarPanel from './input-panels/TextSidebarPanel';
 
@@ -64,6 +66,14 @@ export default function ConfigurationPanel() {
       return <SpacerSidebarPanel key={selectedBlockId} data={data} setData={(data) => setBlock({ type, data })} />;
     case 'Text':
       return <TextSidebarPanel key={selectedBlockId} data={data} setData={(data) => setBlock({ type, data })} />;
+    case 'AttachmentsList':
+      return (
+        <AttachmentsListSidebarPanel key={selectedBlockId} data={data} setData={(data) => setBlock({ type, data })} />
+      );
+    case 'OfferLink':
+      return <OfferLinkSidebarPanel key={selectedBlockId} data={data} setData={(data) => setBlock({ type, data })} />;
+    case 'ClientPanelLink':
+      return <OfferLinkSidebarPanel key={selectedBlockId} data={data} setData={(data) => setBlock({ type, data })} />;
     default:
       return <pre>{JSON.stringify(block, null, '  ')}</pre>;
   }

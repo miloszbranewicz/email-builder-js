@@ -1,6 +1,6 @@
 import React, { CSSProperties } from 'react';
 
-import { DeleteOutlined } from '@mui/icons-material';
+import { CopyAll, DeleteOutlined } from '@mui/icons-material';
 import { IconButton, Paper, Stack, Tooltip } from '@mui/material';
 
 import { TEditorBlock } from '../../../editor/core';
@@ -20,11 +20,21 @@ type Props = {
 export default function TuneMenu({ blockId }: Props) {
   const document = useDocument();
 
+  const handleBlockDuplicateClick = () => {
+    const block = document[blockId] as TEditorBlock;
+    const newBlockId = `block-${Date.now()}`;
+    const blockCopy = Object.assign({}, block);
+    const nDocument = { ...document, [newBlockId]: blockCopy };
+    document['root'].data.childrenIds.push(newBlockId);
+    resetDocument(nDocument);
+  };
+
   const handleDeleteClick = () => {
     const filterChildrenIds = (childrenIds: string[] | null | undefined) => {
       if (!childrenIds) {
         return childrenIds;
       }
+
       return childrenIds.filter((f) => f !== blockId);
     };
     const nDocument: typeof document = { ...document };
@@ -83,6 +93,11 @@ export default function TuneMenu({ blockId }: Props) {
         <Tooltip title="Usuń" placement="left-start">
           <IconButton onClick={handleDeleteClick} sx={{ color: 'text.primary' }}>
             <DeleteOutlined fontSize="small" />
+          </IconButton>
+        </Tooltip>
+        <Tooltip title="Duplikuj" placement="left-start">
+          <IconButton sx={{ color: 'text.primary' }} onClick={handleBlockDuplicateClick}>
+            <CopyAll fontSize="small" />
           </IconButton>
         </Tooltip>
       </Stack>

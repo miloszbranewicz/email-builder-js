@@ -19,6 +19,9 @@ import ColumnsContainerEditor from '../blocks/ColumnsContainer/ColumnsContainerE
 import ColumnsContainerPropsSchema from '../blocks/ColumnsContainer/ColumnsContainerPropsSchema';
 import ContainerEditor from '../blocks/Container/ContainerEditor';
 import ContainerPropsSchema from '../blocks/Container/ContainerPropsSchema';
+import AttachmentsList from '../blocks/CRM/AttachmentsList/AttachmentsList';
+import AttachmentsListPropsSchema from '../blocks/CRM/AttachmentsList/AttachmentsListPropsSchema';
+import { OfferLink, OfferLinkPropsSchema } from '../blocks/CRM/OfferLink/OfferLink';
 import EmailLayoutEditor from '../blocks/EmailLayout/EmailLayoutEditor';
 import EmailLayoutPropsSchema from '../blocks/EmailLayout/EmailLayoutPropsSchema';
 import EditorBlockWrapper from '../blocks/helpers/block-wrappers/EditorBlockWrapper';
@@ -29,6 +32,14 @@ const EDITOR_DICTIONARY = buildBlockConfigurationDictionary({
     Component: (props) => (
       <EditorBlockWrapper>
         <Avatar {...props} />
+      </EditorBlockWrapper>
+    ),
+  },
+  AttachmentsList: {
+    schema: AttachmentsListPropsSchema,
+    Component: (props) => (
+      <EditorBlockWrapper>
+        <AttachmentsList {...props} />
       </EditorBlockWrapper>
     ),
   },
@@ -114,6 +125,22 @@ const EDITOR_DICTIONARY = buildBlockConfigurationDictionary({
     Component: (props) => (
       <EditorBlockWrapper>
         <Divider {...props} />
+      </EditorBlockWrapper>
+    ),
+  },
+  OfferLink: {
+    schema: OfferLinkPropsSchema,
+    Component: (props) => (
+      <EditorBlockWrapper>
+        <OfferLink {...props} />
+      </EditorBlockWrapper>
+    ),
+  },
+  ClientPanelLink: {
+    schema: OfferLinkPropsSchema,
+    Component: (props) => (
+      <EditorBlockWrapper>
+        <OfferLink {...props} />
       </EditorBlockWrapper>
     ),
   },

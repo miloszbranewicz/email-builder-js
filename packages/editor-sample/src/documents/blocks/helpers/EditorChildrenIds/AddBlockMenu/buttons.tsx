@@ -2,15 +2,15 @@ import React from 'react';
 
 import {
   AccountCircleOutlined,
+  Attachment,
   Crop32Outlined,
   HMobiledataOutlined,
   HorizontalRuleOutlined,
   HtmlOutlined,
   ImageOutlined,
-  LibraryAddOutlined,
+  Link,
   NotesOutlined,
   SmartButtonOutlined,
-  ViewColumnOutlined,
 } from '@mui/icons-material';
 
 import { TEditorBlock } from '../../../../editor/core';
@@ -130,27 +130,84 @@ export const BUTTONS: TButtonProps[] = [
     }),
   },
   {
-    label: 'Kolumny',
-    icon: <ViewColumnOutlined />,
+    label: 'Link do oferty',
+    icon: <Link />,
     block: () => ({
-      type: 'ColumnsContainer',
+      type: 'OfferLink',
       data: {
         props: {
-          columnsGap: 16,
-          columnsCount: 3,
-          columns: [{ childrenIds: [] }, { childrenIds: [] }, { childrenIds: [] }],
+          text: 'Link do oferty',
+          url: window?.email?.generator?.offerLink || 'https://google.com',
         },
         style: { padding: { top: 16, bottom: 16, left: 24, right: 24 } },
       },
     }),
   },
   {
-    label: 'Kontener',
-    icon: <LibraryAddOutlined />,
+    label: 'Link do panelu klienta',
+    icon: <Link />,
     block: () => ({
-      type: 'Container',
+      type: 'ClientPanelLink',
       data: {
+        props: {
+          text: 'Link do panelu klienta',
+          url: window?.email?.generator?.clientPanelLink || 'https://google.com',
+        },
         style: { padding: { top: 16, bottom: 16, left: 24, right: 24 } },
+      },
+    }),
+  },
+  // {
+  //   label: 'Kolumny',
+  //   icon: <ViewColumnOutlined />,
+  //   block: () => ({
+  //     type: 'ColumnsContainer',
+  //     data: {
+  //       props: {
+  //         columnsGap: 16,
+  //         columnsCount: 3,
+  //         columns: [{ childrenIds: [] }, { childrenIds: [] }, { childrenIds: [] }],
+  //       },
+  //       style: { padding: { top: 16, bottom: 16, left: 24, right: 24 } },
+  //     },
+  //   }),
+  // },
+  // {
+  //   label: 'Kontener',
+  //   icon: <LibraryAddOutlined />,
+  //   block: () => ({
+  //     type: 'Container',
+  //     data: {
+  //       style: { padding: { top: 16, bottom: 16, left: 24, right: 24 } },
+  //     },
+  //   }),
+  // },
+  {
+    label: 'Załącznik',
+    icon: <Attachment />,
+    block: () => ({
+      type: 'AttachmentsList',
+      data: {
+        style: {
+          color: '#000000',
+          backgroundColor: '#ffffff',
+          fontFamily: 'MODERN_SANS',
+          textAlign: 'left',
+          fontWeight: 'normal',
+          fontSize: 16,
+          padding: {
+            top: 16,
+            bottom: 16,
+            left: 24,
+            right: 24,
+          },
+        },
+        props: {
+          attachment: {
+            name: 'Przykładowy załącznik',
+            url: 'https://unsplash.it/300/300',
+          },
+        },
       },
     }),
   },
