@@ -15,6 +15,91 @@ import {
 
 import { TEditorBlock } from '../../../../editor/core';
 
+const offerBlocks: TButtonProps[] =
+  window?.email?.generator?.templateType === 'Oferta'
+    ? [
+        {
+          label: 'Link do oferty',
+          icon: <Link />,
+          block: () => ({
+            type: 'OfferLink',
+            data: {
+              props: {
+                text: 'Link do oferty',
+                url: window?.email?.generator?.offerLink || 'https://google.com',
+              },
+              style: { padding: { top: 16, bottom: 16, left: 24, right: 24 } },
+            },
+          }),
+        },
+        {
+          label: 'Blok oferty',
+          icon: <Crop32Outlined />,
+          block: () => ({
+            type: 'OfferPlaceholder',
+            data: {
+              props: {
+                text: 'Tu pojawi się lista mieszkań',
+              },
+              style: { padding: { top: 16, bottom: 16, left: 24, right: 24 } },
+            },
+          }),
+        },
+        {
+          label: 'Tytuł oferty',
+          icon: <HMobiledataOutlined />,
+          block: () => ({
+            type: 'OfferTitlePlaceholder',
+            data: {
+              props: {
+                text: 'Tu pojawi się tytuł oferty',
+              },
+              style: { padding: { top: 16, bottom: 16, left: 24, right: 24 } },
+            },
+          }),
+        },
+        {
+          label: 'Tekst oferty',
+          icon: <HMobiledataOutlined />,
+          block: () => ({
+            type: 'OfferTextPlaceholder',
+            data: {
+              props: {
+                text: 'Tu pojawi się tekst oferty',
+              },
+              style: { padding: { top: 16, bottom: 16, left: 24, right: 24 } },
+            },
+          }),
+        },
+        {
+          label: 'Pliki oferty',
+          icon: <Attachment />,
+          block: () => ({
+            type: 'OfferAttachmentsPlaceholder',
+            data: {
+              props: {
+                text: 'Tu pojawi się lista plików oferty',
+              },
+              style: { padding: { top: 16, bottom: 16, left: 24, right: 24 } },
+            },
+          }),
+        },
+        {
+          label: 'Stopka użytkownika',
+          icon: <Crop32Outlined />,
+          block: () => ({
+            type: 'UserFooterPlaceholder',
+            data: {
+              props: {
+                text: 'Tu pojawi się stopka',
+              },
+              style: { padding: { top: 16, bottom: 16, left: 24, right: 24 } },
+            },
+          }),
+        },
+      ]
+    : [];
+
 type TButtonProps = {
   label: string;
   icon: JSX.Element;
@@ -130,20 +215,6 @@ export const BUTTONS: TButtonProps[] = [
     }),
   },
   {
-    label: 'Link do oferty',
-    icon: <Link />,
-    block: () => ({
-      type: 'OfferLink',
-      data: {
-        props: {
-          text: 'Link do oferty',
-          url: window?.email?.generator?.offerLink || 'https://google.com',
-        },
-        style: { padding: { top: 16, bottom: 16, left: 24, right: 24 } },
-      },
-    }),
-  },
-  {
     label: 'Link do panelu klienta',
     icon: <Link />,
     block: () => ({
@@ -212,6 +283,7 @@ export const BUTTONS: TButtonProps[] = [
     }),
   },
 
+  ...offerBlocks,
   // { label: 'ProgressBar', icon: <ProgressBarOutlined />, block: () => ({}) },
   // { label: 'LoopContainer', icon: <ViewListOutlined />, block: () => ({}) },
 ];

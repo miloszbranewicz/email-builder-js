@@ -18,6 +18,11 @@ import ImageSidebarPanel from './input-panels/ImageSidebarPanel';
 import OfferLinkSidebarPanel from './input-panels/OfferLinkSidebarPanel';
 import SpacerSidebarPanel from './input-panels/SpacerSidebarPanel';
 import TextSidebarPanel from './input-panels/TextSidebarPanel';
+import { OfferPlaceholder } from '../../../documents/blocks/CRM/OfferPlaceholder/OfferPlaceholder';
+import { OfferAttachmentsPlaceholder } from '../../../documents/blocks/CRM/OfferAttachmentsPlaceholder/OfferAttachmentsPlaceholder';
+import { OfferTitlePlaceholder } from '../../../documents/blocks/CRM/OfferTitlePlaceholder/OfferTitlePlaceholder';
+import { UserFooterPlaceholder } from '../../../documents/blocks/CRM/UserFooterPlaceholder/UserFooterPlaceholder';
+import { OfferTextPlaceholder } from '../../../documents/blocks/CRM/OfferTextPlaceholder/OfferTextPlaceholder';
 
 function renderMessage(val: string) {
   return (
@@ -74,6 +79,16 @@ export default function ConfigurationPanel() {
       return <OfferLinkSidebarPanel key={selectedBlockId} data={data} setData={(data) => setBlock({ type, data })} />;
     case 'ClientPanelLink':
       return <OfferLinkSidebarPanel key={selectedBlockId} data={data} setData={(data) => setBlock({ type, data })} />;
+    case 'OfferPlaceholder':
+      return <OfferPlaceholder key={selectedBlockId}  />;
+    case 'OfferAttachmentsPlaceholder':
+      return <OfferAttachmentsPlaceholder key={selectedBlockId}  />;
+    case 'UserFooterPlaceholder':
+      return <UserFooterPlaceholder key={selectedBlockId}  />;
+    case 'OfferTitlePlaceholder':
+      return <OfferTitlePlaceholder key={selectedBlockId}  />;
+    case 'OfferTextPlaceholder':
+      return <OfferTextPlaceholder key={selectedBlockId}  />;
     default:
       return <pre>{JSON.stringify(block, null, '  ')}</pre>;
   }

@@ -25,6 +25,16 @@ import { OfferLink, OfferLinkPropsSchema } from '../blocks/CRM/OfferLink/OfferLi
 import EmailLayoutEditor from '../blocks/EmailLayout/EmailLayoutEditor';
 import EmailLayoutPropsSchema from '../blocks/EmailLayout/EmailLayoutPropsSchema';
 import EditorBlockWrapper from '../blocks/helpers/block-wrappers/EditorBlockWrapper';
+import { OfferPlaceholder } from '../blocks/CRM/OfferPlaceholder/OfferPlaceholder';
+import OfferPlaceholderPropsSchema from '../blocks/CRM/OfferPlaceholder/OfferPlaceholderPropsSchema';
+import OfferTitlePlaceholderPropsSchema from '../blocks/CRM/OfferTitlePlaceholder/OfferTitlePlaceholderPropsSchema';
+import { OfferTitlePlaceholder } from '../blocks/CRM/OfferTitlePlaceholder/OfferTitlePlaceholder';
+import OfferAttachmentsPlaceholderPropsSchema from '../blocks/CRM/OfferAttachmentsPlaceholder/OfferAttachmentsPlaceholderPropsSchema';
+import { OfferAttachmentsPlaceholder } from '../blocks/CRM/OfferAttachmentsPlaceholder/OfferAttachmentsPlaceholder';
+import UserFooterPlaceholderPropsSchema from '../blocks/CRM/UserFooterPlaceholder/UserFooterPlaceholderPropsSchema';
+import { UserFooterPlaceholder } from '../blocks/CRM/UserFooterPlaceholder/UserFooterPlaceholder';
+import OfferTextPlaceholderPropsSchema from '../blocks/CRM/OfferTextPlaceholder/OfferTextPlaceholderPropsSchema';
+import { OfferTextPlaceholder } from '../blocks/CRM/OfferTextPlaceholder/OfferTextPlaceholder';
 
 const EDITOR_DICTIONARY = buildBlockConfigurationDictionary({
   Avatar: {
@@ -141,6 +151,46 @@ const EDITOR_DICTIONARY = buildBlockConfigurationDictionary({
     Component: (props) => (
       <EditorBlockWrapper>
         <OfferLink {...props} />
+      </EditorBlockWrapper>
+    ),
+  },
+  OfferPlaceholder: {
+    schema: OfferPlaceholderPropsSchema,
+    Component: (props) => (
+      <EditorBlockWrapper>
+        <OfferPlaceholder {...props} />
+      </EditorBlockWrapper>
+    ),
+  },
+  OfferTitlePlaceholder: {
+    schema: OfferTitlePlaceholderPropsSchema,
+    Component: (props) => (
+      <EditorBlockWrapper>
+        <OfferTitlePlaceholder {...props} />
+      </EditorBlockWrapper>
+    ),
+  },
+  OfferAttachmentsPlaceholder: {
+    schema: OfferAttachmentsPlaceholderPropsSchema,
+    Component: (props) => (
+      <EditorBlockWrapper>
+        <OfferAttachmentsPlaceholder {...props} />
+      </EditorBlockWrapper>
+    ),
+  },
+  UserFooterPlaceholder: {
+    schema: UserFooterPlaceholderPropsSchema,
+    Component: (props) => (
+      <EditorBlockWrapper>
+        <UserFooterPlaceholder {...props} />
+      </EditorBlockWrapper>
+    ),
+  },
+  OfferTextPlaceholder: {
+    schema: OfferTextPlaceholderPropsSchema,
+    Component: (props) => (
+      <EditorBlockWrapper>
+        <OfferTextPlaceholder {...props} />
       </EditorBlockWrapper>
     ),
   },

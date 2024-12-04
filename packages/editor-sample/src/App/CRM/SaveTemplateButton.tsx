@@ -2,7 +2,7 @@ import React from 'react';
 import toast from 'react-hot-toast';
 
 import { Save } from '@mui/icons-material';
-import { CircularProgress, IconButton, Tooltip } from '@mui/material';
+import { Button, CircularProgress, IconButton, Tooltip, Typography } from '@mui/material';
 import { useSaveData } from '../hooks/useSaveData';
 import { getPreviewTemplateURL } from '../helpers/getPreviewURL';
 
@@ -30,11 +30,12 @@ function SaveTemplateButton() {
   };
 
   return (
-    <Tooltip title="Zapisz template">
-      <IconButton color="primary" onClick={handleClick} disabled={isLoading}>
+    <Tooltip title="Zapisz Szablon">
+      <Button color="info" variant='contained' onClick={handleClick} disabled={isLoading}>
         {isLoading && <CircularProgress size={24} />}
         {!isLoading && <Save />}
-      </IconButton>
+        {!isLoading && <Typography marginInlineStart={1}>Zapisz</Typography>}
+      </Button>
     </Tooltip>
   );
 }
