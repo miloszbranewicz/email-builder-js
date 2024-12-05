@@ -59,7 +59,7 @@ export default function EmailLayoutEditor(props: EmailLayoutProps) {
         width="100%"
         style={{
           margin: '0 auto',
-          maxWidth: '600px',
+          maxWidth: window?.email?.generator?.templateType === 'Oferta' ? '1300px' : '600px',
           backgroundColor: props.canvasColor ?? '#FFFFFF',
           borderRadius: props.borderRadius ?? undefined,
           border: (() => {

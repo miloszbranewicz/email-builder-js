@@ -1,11 +1,12 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import {
   VerticalAlignBottomOutlined,
   VerticalAlignCenterOutlined,
   VerticalAlignTopOutlined,
+  FileOpen,
 } from '@mui/icons-material';
-import { Stack, ToggleButton } from '@mui/material';
+import { Button, Link, Stack, ToggleButton, Tooltip } from '@mui/material';
 import { ImageProps, ImagePropsSchema } from '@usewaypoint/block-image';
 
 import BaseSidebarPanel from './helpers/BaseSidebarPanel';
@@ -20,6 +21,57 @@ type ImageSidebarPanelProps = {
 };
 export default function ImageSidebarPanel({ data, setData }: ImageSidebarPanelProps) {
   const [, setErrors] = useState<Zod.ZodError | null>(null);
+  const [renderTrigger, setRenderTrigger] = useState(0);
+
+  useEffect(() => {
+    const requestClipboardPermission = async () => {
+      try {
+        const permissionStatus = await navigator.permissions.query({ name: 'clipboard-read' as PermissionName });
+        
+        if (permissionStatus.state === 'prompt') {
+          await navigator.clipboard.read();
+        }
+        return permissionStatus.state === 'granted';
+      } catch (error) {
+        console.debug('Clipboard API not supported:', error);
+        return false;
+      }
+    };
+
+    const handleClipboardAccess = async () => {
+      try {
+        const hasPermission = await requestClipboardPermission();
+
+        if (hasPermission) {
+          const clipboardItems = await navigator.clipboard.read();
+          const isLastItemUrl = clipboardItems.length > 0 && clipboardItems[clipboardItems.length - 1].types.includes('text/plain');
+          
+          if (isLastItemUrl) {
+            const textBlob = await clipboardItems[clipboardItems.length - 1].getType('text/plain');
+            const text = await new Response(textBlob).text();
+            const itemTrimmed = text.trim();
+            const isImage = itemTrimmed.endsWith('.png') || itemTrimmed.endsWith('.jpg') || itemTrimmed.endsWith('.jpeg');
+            const isUrl = itemTrimmed.startsWith('http') || itemTrimmed.startsWith('https');
+            if (isImage && isUrl) {
+              updateData({ ...data, props: { ...data.props, url: itemTrimmed } });
+              setRenderTrigger(prev => prev + 1);
+            }
+          }
+        }
+      } catch (error) {
+        console.debug('Clipboard access failed:', error);
+      }
+    };
+
+    const handleVisibilityChange = () => {
+      if (document.visibilityState === 'visible') {
+        handleClipboardAccess();
+      }
+    };
+
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+    return () => document.removeEventListener('visibilitychange', handleVisibilityChange);
+  }, [data]);
 
   const updateData = (d: unknown) => {
     const res = ImagePropsSchema.safeParse(d);
@@ -31,11 +83,19 @@ export default function ImageSidebarPanel({ data, setData }: ImageSidebarPanelPr
     }
   };
 
+
+
   return (
     <BaseSidebarPanel title="Blok obrazka">
+      <Tooltip title="Przejdź do plików">
+        <Button href={window?.email?.generator?.filesURL ?? ''} target="_blank" component={Link} variant="contained">
+          Dodaj obrazek
+        </Button>
+      </Tooltip>
       <TextInput
         label="Url obrazka"
         defaultValue={data.props?.url ?? ''}
+        key={renderTrigger}
         onChange={(v) => {
           const url = v.trim().length === 0 ? null : v.trim();
           updateData({ ...data, props: { ...data.props, url } });
